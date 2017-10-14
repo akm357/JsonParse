@@ -34,6 +34,33 @@ namespace jsonParse
     {
       Db = new Database();
     }
+    
+    /// <summary>
+    /// Process the meeting object so that it's entries can be added to the database
+    /// </summary>
+    /// <param name="meeting">The meeting model that contains data for database</param>
+    public static void ProcessMeetingToDb(Meeting meeting)
+    {
+        //create new row for meeting and add to table
+        var mRow = Db.tblMeetings.NewRow();
+        mRow["pkeyMeetingId"] = meeting.id;
+        mRow["fldName"] = meeting.name;
+        mRow["fldState"] = meeting.state;
+        mRow["fldDate"] = meeting.Date;
+        Db.tblMeetings.Rows.Add( mRow );
+        
+        //loop over races of meeting and create new rows for races table
+        foreach (var r in meeting.races) {
+          var rRow = Db.tblRaces.NewRow();
+          rRow["pkeyRaceId"] = r.id;
+          rRow["fkeyMeetingId"] = meeting.id;
+          rRow["fldRaceNumber"] = r.racenumber;
+          rRow["fldRaceName"] = r.racename;
+          rRow["fldStartTime"] = r.starttime;
+          rRow["fldEndTime"] = r.endtime;
+          Db.tblRaces.Rows.Add(rRow);
+        }
+    }
 
     /// <summary>
     /// Program entry point
@@ -50,25 +77,8 @@ namespace jsonParse
           .Deserialize<MeetingContainer>(json)
           .Meeting;
         
-        //write meeting(s) to database
-        var mRow = Db.tblMeetings.NewRow();
-        mRow["pkeyMeetingId"] = meeting.id;
-        mRow["fldName"] = meeting.name;
-        mRow["fldState"] = meeting.state;
-        mRow["fldDate"] = meeting.Date;
-        Db.tblMeetings.Rows.Add( mRow );
-        
-        //write races to database
-        foreach (var r in meeting.races) {
-          var rRow = Db.tblRaces.NewRow();
-          rRow["pkeyRaceId"] = r.id;
-          rRow["fkeyMeetingId"] = meeting.id;
-          rRow["fldRaceNumber"] = r.racenumber;
-          rRow["fldRaceName"] = r.racename;
-          rRow["fldStartTime"] = r.starttime;
-          rRow["fldEndTime"] = r.endtime;
-          Db.tblRaces.Rows.Add(rRow);
-        }
+        //Convert Meeting object to 
+        ProcessMeetingToDb(meeting);
         
         Console.Out.WriteLine(string.Format("{0} successfully read, processed and written to database.", filePath));
       }
@@ -77,7 +87,6 @@ namespace jsonParse
       {
         Console.Out.WriteLine("Application Error");
         Console.Out.WriteLine(ex);
-        
       }
       
       Console.Write("Press any key to continue . . . ");
