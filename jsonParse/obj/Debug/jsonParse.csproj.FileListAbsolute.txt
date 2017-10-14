@@ -1,0 +1,6 @@
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\obj\Debug\jsonParse.csprojResolveAssemblyReference.cache
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\bin\Debug\jsonParse.exe.config
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\bin\Debug\jsonParse.exe
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\bin\Debug\jsonParse.pdb
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\obj\Debug\jsonParse.exe
+C:\Users\aaron\Documents\SharpDevelop Projects\jsonParse\jsonParse\obj\Debug\jsonParse.pdb
