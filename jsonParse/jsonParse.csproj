@@ -57,7 +57,7 @@
     <Compile Include="data\Database.cs" />
     <Compile Include="models\Meeting.cs" />
     <Compile Include="models\Race.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="SkyJsonParse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

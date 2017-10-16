@@ -32,9 +32,9 @@ namespace jsonParse
       
       //create columns
       tblMeetings.Columns.AddRange(new []{new DataColumn("pkeyMeetingId",typeof(int)),
-                                     new DataColumn(      "fldName"),
-                                     new DataColumn(      "fldState"),
-                                     new DataColumn(      "fldDate", typeof(DateTime))});
+                                     new DataColumn("fldName"),
+                                     new DataColumn("fldState"),
+                                     new DataColumn("fldDate", typeof(DateTime))});
       
       tblRaces.Columns.AddRange(new []{new DataColumn("pkeyRaceId",typeof(int)),
                                   new DataColumn("fkeyMeetingId", typeof(int)),
